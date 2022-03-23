@@ -1,0 +1,2 @@
+rootProject.name = "Pip Camera Plus"
+include ':app'
