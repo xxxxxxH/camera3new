@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="50dp"
     tools:context=".ui.activity.CartoonActivity">
 
     <RelativeLayout
@@ -92,4 +91,7 @@
 
 
     </LinearLayout>
+    <com.pipipi.camhd.view.topon.TopOnBannerAdView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 </LinearLayout>

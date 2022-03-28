@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="50dp"
     tools:context=".ui.activity.StickerActivity">
 
     <RelativeLayout
@@ -16,7 +15,7 @@
         <me.panpf.sketch.SketchImageView
             android:id="@+id/iv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <com.lcw.library.stickerview.StickerLayout
             android:id="@+id/stickers"
@@ -41,11 +40,11 @@
 
             <RelativeLayout
                 android:layout_width="0dp"
-                android:contentDescription="cancel"
                 android:layout_height="match_parent"
-                android:onClick="optionClick"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:contentDescription="cancel"
+                android:gravity="center"
+                android:onClick="optionClick">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -71,10 +70,10 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:contentDescription="save"
-                android:onClick="optionClick"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:contentDescription="save"
+                android:gravity="center"
+                android:onClick="optionClick">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -95,4 +94,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <com.pipipi.camhd.view.topon.TopOnBannerAdView
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>
