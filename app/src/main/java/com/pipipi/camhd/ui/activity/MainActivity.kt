@@ -53,34 +53,37 @@ class MainActivity : BaseActivity(R.layout.activity_main_new) {
     fun optionClick(view: View) {
         if (!isPer) return
         val desc = view.contentDescription.toString().toInt()
-        showInsertAd()
-        if (desc == 5) {
-            try {
-                val fileDir = File(Environment.getExternalStorageDirectory(), "Pictures")
-                if (!fileDir.exists()) {
-                    fileDir.mkdir()
-                }
-                mFilePath = fileDir.absolutePath + "/IMG_" + System.currentTimeMillis() + ".jpg"
+        val a = showInsertAd()
+        if (a){
 
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                val uri: Uri = if (Build.VERSION.SDK_INT >= 24) {
-                    FileProvider.getUriForFile(
-                        this,
-                        ImagePickerProvider.getFileProviderName(this),
-                        File(mFilePath)
-                    )
-                } else {
-                    Uri.fromFile(File(mFilePath))
+        }else{
+            if (desc == 5) {
+                try {
+                    val fileDir = File(Environment.getExternalStorageDirectory(), "Pictures")
+                    if (!fileDir.exists()) {
+                        fileDir.mkdir()
+                    }
+                    mFilePath = fileDir.absolutePath + "/IMG_" + System.currentTimeMillis() + ".jpg"
+
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    val uri: Uri = if (Build.VERSION.SDK_INT >= 24) {
+                        FileProvider.getUriForFile(
+                            this,
+                            ImagePickerProvider.getFileProviderName(this),
+                            File(mFilePath)
+                        )
+                    } else {
+                        Uri.fromFile(File(mFilePath))
+                    }
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+                    startActivityForResult(intent, 100)
+                } catch (e: Exception) {
+                    TastyToast.makeText(this, "camera error", TastyToast.LENGTH_SHORT, TastyToast.ERROR)
                 }
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-                startActivityForResult(intent, 100)
-            } catch (e: Exception) {
-                TastyToast.makeText(this, "camera error", TastyToast.LENGTH_SHORT, TastyToast.ERROR)
+            } else {
+                openGallery(desc)
             }
-        } else {
-            openGallery(desc)
         }
-
     }
 
     private fun startNextActivity(clazz: Class<*>, url: String) {

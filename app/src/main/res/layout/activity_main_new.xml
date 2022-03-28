@@ -84,4 +84,8 @@
             android:onClick="optionClick"
             android:src="@mipmap/main_item_camera" />
     </RelativeLayout>
+
+    <com.pipipi.camhd.view.topon.TopOnBannerAdView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 </LinearLayout>

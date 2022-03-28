@@ -89,6 +89,18 @@ fun scanNotice(context: Context, file: File) {
         })
 }
 
+fun isInBackground(): Boolean {
+    val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+    val appProcesses = activityManager
+        .runningAppProcesses
+    for (appProcess in appProcesses) {
+        if (appProcess.processName == app.packageName) {
+            return appProcess.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+        }
+    }
+    return false
+}
+
 fun AppCompatActivity.requestPermission(block: () -> Unit = {}) {
     XXPermissions.with(this)
         .permission(
